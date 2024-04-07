@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 let todos = [];
 let condition = true;
@@ -11,7 +12,7 @@ let pinAnswer = await inquirer.prompt([
 let todoLength = await inquirer.prompt([
     {
         name: "length",
-        meassage: "enter the length of todo list",
+        meassage: "Enter the length of todo list",
         tpye: "number",
     }
 ]);
@@ -44,3 +45,12 @@ else {
     console.log("your pin is incorrect");
 }
 ;
+let removeTodo = await inquirer.prompt([
+    {
+        name: "todo",
+        message: "Do you want to remove any item form list then mention their number",
+        type: "number",
+    }
+]);
+todos.splice(removeTodo.todo, 1);
+console.log(`Final Todo List ${todos}`);
